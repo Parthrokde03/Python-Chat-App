@@ -6,7 +6,7 @@ def send():
     message = entry.get()
     if message.strip() == "":
         return
-    chat_listbox.insert(END, "🟢 Server: " + message)
+    chat_listbox.insert(END, "Server: " + message)
     entry.delete(0, END)
     client.send(message.encode('utf-8'))
     receive()
@@ -15,12 +15,12 @@ def receive():
     try:
         msg = client.recv(1024).decode('utf-8')
         if msg:
-            chat_listbox.insert(END, "🔵 Client: " + msg)
+            chat_listbox.insert(END, "Client: " + msg)
     except:
-        chat_listbox.insert(END, "❌ Error receiving message")
+        chat_listbox.insert(END, "Error receiving message")
 
 root = Tk()
-root.title("🖥️ Server Chat")
+root.title("Server Chat")
 root.geometry("400x500")
 root.resizable(False, False)
 
