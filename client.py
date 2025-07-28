@@ -5,7 +5,7 @@ def send():
     message = entry.get()
     if message.strip() == "":
         return
-    chat_listbox.insert(END, "🟢 Client: " + message)
+    chat_listbox.insert(END, "Client: " + message)
     entry.delete(0, END)
     s.send(message.encode('utf-8'))
     receive()
@@ -14,12 +14,12 @@ def receive():
     try:
         msg = s.recv(1024).decode('utf-8')
         if msg:
-            chat_listbox.insert(END, "🔵 Server: " + msg)
+            chat_listbox.insert(END, "Server: " + msg)
     except:
-        chat_listbox.insert(END, "❌ Error receiving message")
+        chat_listbox.insert(END, "Error receiving message")
 
 root = Tk()
-root.title("📲 Client Chat")
+root.title("Client Chat")
 root.geometry("400x500")
 root.resizable(False, False)
 
@@ -53,6 +53,6 @@ try:
     s.connect((HOST_NAME, PORT))
     chat_listbox.insert(END, f"Connected to server at {HOST_NAME}:{PORT}")
 except Exception as e:
-    chat_listbox.insert(END, f"❌ Connection failed: {e}")
+    chat_listbox.insert(END, f"Connection failed: {e}")
 
 root.mainloop()
